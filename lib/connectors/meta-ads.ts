@@ -8,6 +8,6 @@ export async function syncMetaAds(creds: { access_token: string; metadata?: any 
   // const adAccountId = creds.metadata?.ad_account_id;
   // const res = await fetch(`https://graph.facebook.com/v18.0/act_${adAccountId}/insights?...&access_token=${creds.access_token}`);
   
-  console.log('[meta-ads] Sync called \u2014 configure META_AD_ACCOUNT_ID in org metadata to enable');
+  console.log('[meta-ads] Sync called — configure META_AD_ACCOUNT_ID in org metadata to enable');
   return [];
 }
