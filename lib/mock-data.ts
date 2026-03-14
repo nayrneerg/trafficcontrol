@@ -45,207 +45,59 @@ export const mockSummary: ExecutiveSummary = {
 export const mockChannels: ChannelMetrics[] = [
   {
     platform: 'google_ads',
-    spend: {
-      value: 22140,
-      change: 10.2,
-      trend: 'up',
-    },
-    impressions: {
-      value: 1245890,
-      change: 7.8,
-      trend: 'up',
-    },
-    clicks: {
-      value: 24918,
-      change: 9.4,
-      trend: 'up',
-    },
-    conversions: {
-      value: 498,
-      change: 15.2,
-      trend: 'up',
-    },
-    revenue: {
-      value: 84726,
-      change: 18.3,
-      trend: 'up',
-    },
-    roas: {
-      value: 3.83,
-      change: 7.3,
-      trend: 'up',
-    },
-    cpl: {
-      value: 44.46,
-      change: -3.2,
-      trend: 'down',
-    },
-    ctr: {
-      value: 2.0,
-      change: 1.5,
-      trend: 'up',
-    },
-    cpc: {
-      value: 0.89,
-      change: 0.8,
-      trend: 'up',
-    },
+    spend: { value: 22140, change: 10.2, trend: 'up' },
+    impressions: { value: 1245890, change: 7.8, trend: 'up' },
+    clicks: { value: 24918, change: 9.4, trend: 'up' },
+    conversions: { value: 498, change: 15.2, trend: 'up' },
+    revenue: { value: 84726, change: 18.3, trend: 'up' },
+    roas: { value: 3.83, change: 7.3, trend: 'up' },
+    cpl: { value: 44.46, change: -3.2, trend: 'down' },
+    ctr: { value: 2.0, change: 1.5, trend: 'up' },
+    cpc: { value: 0.89, change: 0.8, trend: 'up' },
   },
   {
     platform: 'meta_ads',
-    spend: {
-      value: 18620,
-      change: 6.8,
-      trend: 'up',
-    },
-    impressions: {
-      value: 654320,
-      change: 4.2,
-      trend: 'up',
-    },
-    clicks: {
-      value: 13086,
-      change: 5.9,
-      trend: 'up',
-    },
-    conversions: {
-      value: 262,
-      change: 8.7,
-      trend: 'up',
-    },
-    revenue: {
-      value: 44824,
-      change: 11.2,
-      trend: 'up',
-    },
-    roas: {
-      value: 2.41,
-      change: 4.1,
-      trend: 'up',
-    },
-    cpl: {
-      value: 71.07,
-      change: -1.8,
-      trend: 'down',
-    },
-    ctr: {
-      value: 2.0,
-      change: 1.7,
-      trend: 'up',
-    },
-    cpc: {
-      value: 1.42,
-      change: 0.9,
-      trend: 'up',
-    },
+    spend: { value: 18620, change: 6.8, trend: 'up' },
+    impressions: { value: 654320, change: 4.2, trend: 'up' },
+    clicks: { value: 13086, change: 5.9, trend: 'up' },
+    conversions: { value: 262, change: 8.7, trend: 'up' },
+    revenue: { value: 44824, change: 11.2, trend: 'up' },
+    roas: { value: 2.41, change: 4.1, trend: 'up' },
+    cpl: { value: 71.07, change: -1.8, trend: 'down' },
+    ctr: { value: 2.0, change: 1.7, trend: 'up' },
+    cpc: { value: 1.42, change: 0.9, trend: 'up' },
   },
   {
     platform: 'tiktok_ads',
-    spend: {
-      value: 4520,
-      change: 7.5,
-      trend: 'up',
-    },
-    impressions: {
-      value: 234357,
-      change: 9.1,
-      trend: 'up',
-    },
-    clicks: {
-      value: 4687,
-      change: 11.3,
-      trend: 'up',
-    },
-    conversions: {
-      value: 82,
-      change: 13.9,
-      trend: 'up',
-    },
-    revenue: {
-      value: 14540,
-      change: 16.8,
-      trend: 'up',
-    },
-    roas: {
-      value: 3.22,
-      change: 8.6,
-      trend: 'up',
-    },
-    cpl: {
-      value: 55.12,
-      change: -4.3,
-      trend: 'down',
-    },
-    ctr: {
-      value: 2.0,
-      change: 2.0,
-      trend: 'up',
-    },
-    cpc: {
-      value: 0.96,
-      change: -3.5,
-      trend: 'down',
-    },
+    spend: { value: 4520, change: 7.5, trend: 'up' },
+    impressions: { value: 234357, change: 9.1, trend: 'up' },
+    clicks: { value: 4687, change: 11.3, trend: 'up' },
+    conversions: { value: 82, change: 13.9, trend: 'up' },
+    revenue: { value: 14540, change: 16.8, trend: 'up' },
+    roas: { value: 3.22, change: 8.6, trend: 'up' },
+    cpl: { value: 55.12, change: -4.3, trend: 'down' },
+    ctr: { value: 2.0, change: 2.0, trend: 'up' },
+    cpc: { value: 0.96, change: -3.5, trend: 'down' },
   },
 ];
 
 // Spend Allocation
 export const mockSpendAllocation: SpendAllocation[] = [
-  {
-    platform: 'google_ads',
-    spend: 22140,
-    percentage: 48.9,
-  },
-  {
-    platform: 'meta_ads',
-    spend: 18620,
-    percentage: 41.1,
-  },
-  {
-    platform: 'tiktok_ads',
-    spend: 4520,
-    percentage: 10.0,
-  },
+  { platform: 'google_ads', spend: 22140, percentage: 48.9 },
+  { platform: 'meta_ads', spend: 18620, percentage: 41.1 },
+  { platform: 'tiktok_ads', spend: 4520, percentage: 10.0 },
 ];
 
 // Conversion Funnel
 export const mockConversionFunnel: ConversionFunnel = {
   stages: [
-    {
-      stage: 'Impressions',
-      value: 2134567,
-      percentage: 100,
-    },
-    {
-      stage: 'Clicks',
-      value: 42691,
-      percentage: 2.0,
-    },
-    {
-      stage: 'Landing Page Views',
-      value: 35128,
-      percentage: 82.3,
-    },
-    {
-      stage: 'Leads',
-      value: 1247,
-      percentage: 3.55,
-    },
-    {
-      stage: 'MQLs',
-      value: 386,
-      percentage: 30.95,
-    },
-    {
-      stage: 'SQLs',
-      value: 142,
-      percentage: 36.79,
-    },
-    {
-      stage: 'Closed Won',
-      value: 48,
-      percentage: 33.8,
-    },
+    { stage: 'Impressions', value: 2134567, percentage: 100 },
+    { stage: 'Clicks', value: 42691, percentage: 2.0 },
+    { stage: 'Landing Page Views', value: 35128, percentage: 82.3 },
+    { stage: 'Leads', value: 1247, percentage: 3.55 },
+    { stage: 'MQLs', value: 386, percentage: 30.95 },
+    { stage: 'SQLs', value: 142, percentage: 36.79 },
+    { stage: 'Closed Won', value: 48, percentage: 33.8 },
   ],
 };
 
@@ -311,6 +163,21 @@ export const mockTrendData: TimeSeries[] = [
     data: [...googleConversionData, ...metaConversionData, ...tiktokConversionData],
   },
 ];
+
+// Flat trend data for TrendChart component (expects { date, spend, conversions }[])
+function buildFlatTrendData(): Array<{ date: string; spend: number; conversions: number }> {
+  return dates.map((date, i) => ({
+    date,
+    spend: Math.round(
+      googleSpendData[i].value + metaSpendData[i].value + tiktokSpendData[i].value
+    ),
+    conversions: Math.round(
+      googleConversionData[i].value + metaConversionData[i].value + tiktokConversionData[i].value
+    ),
+  }));
+}
+
+const flatTrendData = buildFlatTrendData();
 
 // Insights
 export const mockInsights: Insight[] = [
@@ -380,6 +247,12 @@ export const mockInsights: Insight[] = [
 ];
 
 // =============================================
+// Sparkline data for MetricCard trend prop (expects number[])
+// =============================================
+const sparkUp = [3, 4, 3, 5, 4, 6, 5, 7, 6, 8, 7, 9];
+const sparkDown = [9, 8, 9, 7, 8, 6, 7, 5, 6, 4, 5, 3];
+
+// =============================================
 // Data accessor functions used by page components
 // =============================================
 
@@ -389,17 +262,17 @@ export function getGoogleAdsData() {
   return {
     spend: google.spend.value,
     spendChange: google.spend.change,
-    spendTrend: google.spend.trend,
+    spendTrend: sparkUp,
     clicks: google.clicks.value,
     clicksChange: google.clicks.change,
-    clicksTrend: google.clicks.trend,
+    clicksTrend: sparkUp,
     conversions: google.conversions.value,
     conversionsChange: google.conversions.change,
-    conversionsTrend: google.conversions.trend,
+    conversionsTrend: sparkUp,
     roas: google.roas.value,
     roasChange: google.roas.change,
-    roasTrend: google.roas.trend,
-    trendData: mockTrendData,
+    roasTrend: sparkUp,
+    trendData: flatTrendData,
     campaigns: [
       { name: 'Brand Search', spend: 8200, conversions: 210, roas: 4.12, cpc: 0.72, ctr: 3.1 },
       { name: 'Non-Brand Search', spend: 6400, conversions: 142, roas: 3.56, cpc: 1.05, ctr: 1.8 },
@@ -415,17 +288,17 @@ export function getMetaAdsData() {
   return {
     spend: meta.spend.value,
     spendChange: meta.spend.change,
-    spendTrend: meta.spend.trend,
+    spendTrend: sparkUp,
     impressions: meta.impressions.value,
     impressionsChange: meta.impressions.change,
-    impressionsTrend: meta.impressions.trend,
+    impressionsTrend: sparkUp,
     conversions: meta.conversions.value,
     conversionsChange: meta.conversions.change,
-    conversionsTrend: meta.conversions.trend,
+    conversionsTrend: sparkUp,
     roas: meta.roas.value,
     roasChange: meta.roas.change,
-    roasTrend: meta.roas.trend,
-    trendData: mockTrendData,
+    roasTrend: sparkUp,
+    trendData: flatTrendData,
     campaigns: [
       { name: 'Lookalike - Top Customers', spend: 6200, conversions: 95, roas: 2.68, cpc: 1.35, ctr: 2.4 },
       { name: 'Interest - Marketing Pros', spend: 5100, conversions: 72, roas: 2.42, cpc: 1.48, ctr: 1.9 },
@@ -441,17 +314,17 @@ export function getTikTokAdsData() {
   return {
     spend: tiktok.spend.value,
     spendChange: tiktok.spend.change,
-    spendTrend: tiktok.spend.trend,
+    spendTrend: sparkUp,
     views: tiktok.impressions.value,
     viewsChange: tiktok.impressions.change,
-    viewsTrend: tiktok.impressions.trend,
+    viewsTrend: sparkUp,
     conversions: tiktok.conversions.value,
     conversionsChange: tiktok.conversions.change,
-    conversionsTrend: tiktok.conversions.trend,
+    conversionsTrend: sparkUp,
     roas: tiktok.roas.value,
     roasChange: tiktok.roas.change,
-    roasTrend: tiktok.roas.trend,
-    trendData: mockTrendData,
+    roasTrend: sparkUp,
+    trendData: flatTrendData,
     campaigns: [
       { name: 'Spark Ads - UGC', spend: 1800, conversions: 38, roas: 3.60, cpc: 0.82, ctr: 2.8 },
       { name: 'In-Feed - Product Demo', spend: 1400, conversions: 26, roas: 3.18, cpc: 0.95, ctr: 2.2 },
@@ -465,17 +338,17 @@ export function getGA4Data() {
   return {
     users: 48250,
     usersChange: 11.2,
-    usersTrend: 'up' as const,
+    usersTrend: sparkUp,
     sessions: 72180,
     sessionsChange: 8.7,
-    sessionsTrend: 'up' as const,
-    avgSessionDuration: '2:34',
+    sessionsTrend: sparkUp,
+    avgSessionDuration: 154,
     durationChange: 5.1,
-    durationTrend: 'up' as const,
+    durationTrend: sparkUp,
     bounceRate: 42.3,
     bounceRateChange: -3.8,
-    bounceRateTrend: 'down' as const,
-    trendData: mockTrendData,
+    bounceRateTrend: sparkDown,
+    trendData: flatTrendData,
     topPages: [
       { path: '/', views: 18420, avgTime: '1:45' },
       { path: '/pricing', views: 8930, avgTime: '3:12' },
@@ -491,16 +364,16 @@ export function getCRMData() {
   return {
     totalLeads: 1247,
     leadsChange: 9.7,
-    leadsTrend: 'up' as const,
+    leadsTrend: sparkUp,
     pipelineValue: 482000,
     pipelineChange: 14.2,
-    pipelineTrend: 'up' as const,
+    pipelineTrend: sparkUp,
     closedDeals: 48,
     dealsChange: 18.5,
-    dealsTrend: 'up' as const,
+    dealsTrend: sparkUp,
     closeRate: 33.8,
     closeRateChange: 2.4,
-    closeRateTrend: 'up' as const,
+    closeRateTrend: sparkUp,
     pipelineStages: [
       { name: 'New Leads', count: 386, value: 115800, percentage: 100 },
       { name: 'Contacted', count: 248, value: 89280, percentage: 74 },
@@ -524,22 +397,22 @@ export function getDashboardMetrics() {
   return {
     totalSpend: mockSummary.totalSpend.value,
     spendChange: mockSummary.totalSpend.change,
-    spendTrend: mockSummary.totalSpend.trend,
+    spendTrend: sparkUp,
     totalConversions: mockSummary.totalConversions.value,
     conversionsChange: mockSummary.totalConversions.change,
-    conversionsTrend: mockSummary.totalConversions.trend,
+    conversionsTrend: sparkUp,
     blendedRoas: mockSummary.blendedRoas.value,
     roasChange: mockSummary.blendedRoas.change,
-    roasTrend: mockSummary.blendedRoas.trend,
+    roasTrend: sparkUp,
     totalLeads: mockSummary.totalLeads.value,
     leadsChange: mockSummary.totalLeads.change,
-    leadsTrend: mockSummary.totalLeads.trend,
+    leadsTrend: sparkUp,
     avgCpl: 36.31,
     cplChange: -4.2,
-    cplTrend: 'down' as const,
+    cplTrend: sparkDown,
     spendByChannel: mockSpendAllocation,
     channelRoas: mockChannels.map(c => ({ platform: c.platform, roas: c.roas.value })),
-    trendData: mockTrendData,
+    trendData: flatTrendData,
     funnelData: mockConversionFunnel,
     campaignPerformance: [
       { name: 'Google - Brand Search', spend: 8200, conversions: 210, roas: 4.12, cpc: 0.72, ctr: 3.1 },
