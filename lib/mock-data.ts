@@ -314,11 +314,12 @@ export function getDashboardMetrics() {
     trendData: flatTrendData,
     funnelData: mockConversionFunnel,
     campaignPerformance: [
-      { name: 'Google - Brand Search', spend: 8200, conversions: 210, roas: 4.12, cpc: 0.72, ctr: 3.1 },
-      { name: 'Meta - Lookalike', spend: 6200, conversions: 95, roas: 2.68, cpc: 1.35, ctr: 2.4 },
-      { name: 'Google - Non-Brand', spend: 6400, conversions: 142, roas: 3.56, cpc: 1.05, ctr: 1.8 },
-      { name: 'Meta - Retargeting', spend: 4320, conversions: 62, roas: 2.55, cpc: 1.22, ctr: 2.1 },
-      { name: 'TikTok - Spark Ads', spend: 1800, conversions: 38, roas: 3.60, cpc: 0.82, ctr: 2.8 },
+      { campaign: 'Brand Search', platform: 'Google', spend: 8200, clicks: 11389, conversions: 210, roas: 4.12 },
+      { campaign: 'Performance Max', platform: 'Google', spend: 6100, clicks: 8940, conversions: 155, roas: 3.85 },
+      { campaign: 'Retargeting', platform: 'Meta', spend: 4800, clicks: 6230, conversions: 132, roas: 3.52 },
+      { campaign: 'Lookalike Audiences', platform: 'Meta', spend: 3900, clicks: 5100, conversions: 98, roas: 2.87 },
+      { campaign: 'TopView Awareness', platform: 'TikTok', spend: 5200, clicks: 12400, conversions: 87, roas: 2.15 },
+      { campaign: 'In-Feed Conversion', platform: 'TikTok', spend: 3100, clicks: 9800, conversions: 64, roas: 1.94 },
     ],
   };
 }
