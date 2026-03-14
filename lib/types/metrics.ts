@@ -61,8 +61,11 @@ export interface Insight {
   id: string;
   type: 'recommendation' | 'anomaly' | 'summary';
   priority: 'high' | 'medium' | 'low';
+  category: 'optimization' | 'alert' | 'opportunity' | 'trend';
   title: string;
   description: string;
+  impact: string;
+  action: string;
   metric?: string;
   platform?: Platform;
   createdAt: string;
