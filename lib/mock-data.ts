@@ -145,12 +145,12 @@ const flatTrendData = buildFlatTrendData();
 
 // Insights
 export const mockInsights: Insight[] = [
-  { id: 'insight-001', type: 'recommendation', priority: 'high', title: 'Google Ads ROAS exceeding target by 28%', description: 'Google Ads is delivering a 3.83x ROAS, well above the 3.0x target. Consider increasing budget allocation by 15-20% to capitalize on strong performance.', metric: 'roas', platform: 'google_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString() },
-  { id: 'insight-002', type: 'anomaly', priority: 'medium', title: 'TikTok CPC decreased 3.5% week-over-week', description: 'TikTok Ads cost-per-click dropped from $1.00 to $0.96, indicating improved ad relevance or reduced competition.', metric: 'cpc', platform: 'tiktok_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString() },
-  { id: 'insight-003', type: 'summary', priority: 'low', title: 'Overall conversion rate improved 12.3% this period', description: 'Total conversions increased from 750 to 842, driven primarily by Google Ads (+15.2%) and TikTok Ads (+13.9%).', metric: 'conversions', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString() },
-  { id: 'insight-004', type: 'recommendation', priority: 'medium', title: 'Meta Ads CPL optimization opportunity', description: 'Meta Ads CPL of $71.07 is 60% higher than Google Ads ($44.46). Review audience targeting and creative performance.', metric: 'cpl', platform: 'meta_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString() },
-  { id: 'insight-005', type: 'anomaly', priority: 'high', title: 'Funnel drop-off spike at MQL to SQL stage', description: 'Conversion rate from MQL to SQL is 36.79%, down from historical average of 42%.', metric: 'conversion_rate', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 18).toISOString() },
-  { id: 'insight-006', type: 'recommendation', priority: 'medium', title: 'Cross-platform CTR consistency at 2.0%', description: 'All three platforms showing identical 2.0% CTR suggests opportunity to test more aggressive creative variations.', metric: 'ctr', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString() },
+  { id: 'insight-001', type: 'recommendation', priority: 'high', category: 'optimization', title: 'Google Ads ROAS exceeding target by 28%', description: 'Google Ads is delivering a 3.83x ROAS, well above the 3.0x target. Consider increasing budget allocation by 15-20% to capitalize on strong performance.', impact: 'Potential 15-20% revenue increase', action: 'Increase Google Ads daily budget by $150', metric: 'roas', platform: 'google_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString() },
+  { id: 'insight-002', type: 'anomaly', priority: 'medium', category: 'alert', title: 'TikTok CPC decreased 3.5% week-over-week', description: 'TikTok Ads cost-per-click dropped from $1.00 to $0.96, indicating improved ad relevance or reduced competition.', impact: 'Saving ~$120/month at current volume', action: 'Monitor for sustained improvement before scaling', metric: 'cpc', platform: 'tiktok_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString() },
+  { id: 'insight-003', type: 'summary', priority: 'low', category: 'trend', title: 'Overall conversion rate improved 12.3% this period', description: 'Total conversions increased from 750 to 842, driven primarily by Google Ads (+15.2%) and TikTok Ads (+13.9%).', impact: '92 additional conversions this period', action: 'Continue current strategy and monitor next period', metric: 'conversions', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString() },
+  { id: 'insight-004', type: 'recommendation', priority: 'medium', category: 'optimization', title: 'Meta Ads CPL optimization opportunity', description: 'Meta Ads CPL of $71.07 is 60% higher than Google Ads ($44.46). Review audience targeting and creative performance.', impact: 'Could reduce CPL by $15-20 per lead', action: 'A/B test new audience segments on Meta', metric: 'cpl', platform: 'meta_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString() },
+  { id: 'insight-005', type: 'anomaly', priority: 'high', category: 'alert', title: 'Funnel drop-off spike at MQL to SQL stage', description: 'Conversion rate from MQL to SQL is 36.79%, down from historical average of 42%.', impact: 'Losing approximately 20 SQLs per month', action: 'Review lead scoring criteria and SDR follow-up timing', metric: 'conversion_rate', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 18).toISOString() },
+  { id: 'insight-006', type: 'recommendation', priority: 'medium', category: 'opportunity', title: 'Cross-platform CTR consistency at 2.0%', description: 'All three platforms showing identical 2.0% CTR suggests opportunity to test more aggressive creative variations.', impact: 'Even 0.5% CTR lift would add ~200 clicks/day', action: 'Launch creative variation tests across all platforms', metric: 'ctr', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString() },
 ];
 
 // Sparkline arrays for MetricCard trend prop (expects number[])
@@ -330,11 +330,11 @@ export function getAIInsights() {
 
 export function getIntegrationStatus() {
   return [
-    { id: 'google-ads', name: 'Google Ads', platform: 'google_ads', status: 'connected' as const, lastSync: '2 min ago', icon: 'google' },
-    { id: 'meta-ads', name: 'Meta Ads', platform: 'meta_ads', status: 'connected' as const, lastSync: '5 min ago', icon: 'meta' },
-    { id: 'tiktok-ads', name: 'TikTok Ads', platform: 'tiktok_ads', status: 'connected' as const, lastSync: '8 min ago', icon: 'tiktok' },
-    { id: 'google-analytics', name: 'Google Analytics 4', platform: 'ga4', status: 'connected' as const, lastSync: '3 min ago', icon: 'analytics' },
-    { id: 'hubspot', name: 'HubSpot CRM', platform: 'hubspot', status: 'pending' as const, lastSync: 'Never', icon: 'hubspot' },
-    { id: 'salesforce', name: 'Salesforce', platform: 'salesforce', status: 'disconnected' as const, lastSync: 'Never', icon: 'salesforce' },
+    { id: 'google-ads', name: 'Google Ads', description: 'Search, display, and video advertising', platform: 'google_ads', status: 'connected' as const, lastSync: '2 min ago', icon: 'google' },
+    { id: 'meta-ads', name: 'Meta Ads', description: 'Facebook and Instagram advertising', platform: 'meta_ads', status: 'connected' as const, lastSync: '5 min ago', icon: 'meta' },
+    { id: 'tiktok-ads', name: 'TikTok Ads', description: 'Short-form video advertising', platform: 'tiktok_ads', status: 'connected' as const, lastSync: '8 min ago', icon: 'tiktok' },
+    { id: 'google-analytics', name: 'Google Analytics 4', description: 'Website traffic and behavior analytics', platform: 'ga4', status: 'connected' as const, lastSync: '3 min ago', icon: 'analytics' },
+    { id: 'hubspot', name: 'HubSpot CRM', description: 'Customer relationship management', platform: 'hubspot', status: 'pending' as const, lastSync: 'Never', icon: 'hubspot' },
+    { id: 'salesforce', name: 'Salesforce', description: 'Enterprise CRM and sales automation', platform: 'salesforce', status: 'disconnected' as const, lastSync: 'Never', icon: 'salesforce' },
   ];
 }
