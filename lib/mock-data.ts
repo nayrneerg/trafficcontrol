@@ -378,3 +378,192 @@ export const mockInsights: Insight[] = [
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
   },
 ];
+
+// =============================================
+// Data accessor functions used by page components
+// =============================================
+
+// Google Ads page
+export function getGoogleAdsData() {
+  const google = mockChannels.find(c => c.platform === 'google_ads')!;
+  return {
+    spend: google.spend.value,
+    spendChange: google.spend.change,
+    spendTrend: google.spend.trend,
+    clicks: google.clicks.value,
+    clicksChange: google.clicks.change,
+    clicksTrend: google.clicks.trend,
+    conversions: google.conversions.value,
+    conversionsChange: google.conversions.change,
+    conversionsTrend: google.conversions.trend,
+    roas: google.roas.value,
+    roasChange: google.roas.change,
+    roasTrend: google.roas.trend,
+    trendData: mockTrendData,
+    campaigns: [
+      { name: 'Brand Search', spend: 8200, conversions: 210, roas: 4.12, cpc: 0.72, ctr: 3.1 },
+      { name: 'Non-Brand Search', spend: 6400, conversions: 142, roas: 3.56, cpc: 1.05, ctr: 1.8 },
+      { name: 'Performance Max', spend: 4800, conversions: 98, roas: 3.88, cpc: 0.84, ctr: 2.2 },
+      { name: 'Display Remarketing', spend: 2740, conversions: 48, roas: 3.50, cpc: 0.62, ctr: 0.9 },
+    ],
+  };
+}
+
+// Meta Ads page
+export function getMetaAdsData() {
+  const meta = mockChannels.find(c => c.platform === 'meta_ads')!;
+  return {
+    spend: meta.spend.value,
+    spendChange: meta.spend.change,
+    spendTrend: meta.spend.trend,
+    impressions: meta.impressions.value,
+    impressionsChange: meta.impressions.change,
+    impressionsTrend: meta.impressions.trend,
+    conversions: meta.conversions.value,
+    conversionsChange: meta.conversions.change,
+    conversionsTrend: meta.conversions.trend,
+    roas: meta.roas.value,
+    roasChange: meta.roas.change,
+    roasTrend: meta.roas.trend,
+    trendData: mockTrendData,
+    campaigns: [
+      { name: 'Lookalike - Top Customers', spend: 6200, conversions: 95, roas: 2.68, cpc: 1.35, ctr: 2.4 },
+      { name: 'Interest - Marketing Pros', spend: 5100, conversions: 72, roas: 2.42, cpc: 1.48, ctr: 1.9 },
+      { name: 'Retargeting - Website', spend: 4320, conversions: 62, roas: 2.55, cpc: 1.22, ctr: 2.1 },
+      { name: 'Broad - Awareness', spend: 3000, conversions: 33, roas: 1.98, cpc: 1.68, ctr: 1.5 },
+    ],
+  };
+}
+
+// TikTok Ads page
+export function getTikTokAdsData() {
+  const tiktok = mockChannels.find(c => c.platform === 'tiktok_ads')!;
+  return {
+    spend: tiktok.spend.value,
+    spendChange: tiktok.spend.change,
+    spendTrend: tiktok.spend.trend,
+    views: tiktok.impressions.value,
+    viewsChange: tiktok.impressions.change,
+    viewsTrend: tiktok.impressions.trend,
+    conversions: tiktok.conversions.value,
+    conversionsChange: tiktok.conversions.change,
+    conversionsTrend: tiktok.conversions.trend,
+    roas: tiktok.roas.value,
+    roasChange: tiktok.roas.change,
+    roasTrend: tiktok.roas.trend,
+    trendData: mockTrendData,
+    campaigns: [
+      { name: 'Spark Ads - UGC', spend: 1800, conversions: 38, roas: 3.60, cpc: 0.82, ctr: 2.8 },
+      { name: 'In-Feed - Product Demo', spend: 1400, conversions: 26, roas: 3.18, cpc: 0.95, ctr: 2.2 },
+      { name: 'TopView - Brand', spend: 1320, conversions: 18, roas: 2.88, cpc: 1.12, ctr: 1.6 },
+    ],
+  };
+}
+
+// GA4 page
+export function getGA4Data() {
+  return {
+    users: 48250,
+    usersChange: 11.2,
+    usersTrend: 'up' as const,
+    sessions: 72180,
+    sessionsChange: 8.7,
+    sessionsTrend: 'up' as const,
+    avgSessionDuration: '2:34',
+    durationChange: 5.1,
+    durationTrend: 'up' as const,
+    bounceRate: 42.3,
+    bounceRateChange: -3.8,
+    bounceRateTrend: 'down' as const,
+    trendData: mockTrendData,
+    topPages: [
+      { path: '/', views: 18420, avgTime: '1:45' },
+      { path: '/pricing', views: 8930, avgTime: '3:12' },
+      { path: '/features', views: 6840, avgTime: '2:28' },
+      { path: '/blog/marketing-guide', views: 4210, avgTime: '4:35' },
+      { path: '/contact', views: 3180, avgTime: '1:52' },
+    ],
+  };
+}
+
+// CRM page
+export function getCRMData() {
+  return {
+    totalLeads: 1247,
+    leadsChange: 9.7,
+    leadsTrend: 'up' as const,
+    pipelineValue: 482000,
+    pipelineChange: 14.2,
+    pipelineTrend: 'up' as const,
+    closedDeals: 48,
+    dealsChange: 18.5,
+    dealsTrend: 'up' as const,
+    closeRate: 33.8,
+    closeRateChange: 2.4,
+    closeRateTrend: 'up' as const,
+    pipelineStages: [
+      { name: 'New Leads', count: 386, value: 115800, percentage: 100 },
+      { name: 'Contacted', count: 248, value: 89280, percentage: 74 },
+      { name: 'Qualified', count: 142, value: 68160, percentage: 56 },
+      { name: 'Proposal Sent', count: 86, value: 51600, percentage: 38 },
+      { name: 'Negotiation', count: 52, value: 36400, percentage: 24 },
+      { name: 'Closed Won', count: 48, value: 144000, percentage: 18 },
+    ],
+    recentDeals: [
+      { name: 'Enterprise SaaS License', company: 'Acme Corp', value: 24000, closedDate: 'Mar 12', source: 'Google Ads' },
+      { name: 'Annual Subscription', company: 'TechStart Inc', value: 18500, closedDate: 'Mar 11', source: 'Meta Ads' },
+      { name: 'Premium Package', company: 'GlobalTech', value: 15200, closedDate: 'Mar 10', source: 'Organic' },
+      { name: 'Team License', company: 'DataFlow LLC', value: 12800, closedDate: 'Mar 9', source: 'Google Ads' },
+      { name: 'Starter Plan', company: 'NewCo', value: 8400, closedDate: 'Mar 8', source: 'TikTok Ads' },
+    ],
+  };
+}
+
+// Dashboard page
+export function getDashboardMetrics() {
+  return {
+    totalSpend: mockSummary.totalSpend.value,
+    spendChange: mockSummary.totalSpend.change,
+    spendTrend: mockSummary.totalSpend.trend,
+    totalConversions: mockSummary.totalConversions.value,
+    conversionsChange: mockSummary.totalConversions.change,
+    conversionsTrend: mockSummary.totalConversions.trend,
+    blendedRoas: mockSummary.blendedRoas.value,
+    roasChange: mockSummary.blendedRoas.change,
+    roasTrend: mockSummary.blendedRoas.trend,
+    totalLeads: mockSummary.totalLeads.value,
+    leadsChange: mockSummary.totalLeads.change,
+    leadsTrend: mockSummary.totalLeads.trend,
+    avgCpl: 36.31,
+    cplChange: -4.2,
+    cplTrend: 'down' as const,
+    spendByChannel: mockSpendAllocation,
+    channelRoas: mockChannels.map(c => ({ platform: c.platform, roas: c.roas.value })),
+    trendData: mockTrendData,
+    funnelData: mockConversionFunnel,
+    campaignPerformance: [
+      { name: 'Google - Brand Search', spend: 8200, conversions: 210, roas: 4.12, cpc: 0.72, ctr: 3.1 },
+      { name: 'Meta - Lookalike', spend: 6200, conversions: 95, roas: 2.68, cpc: 1.35, ctr: 2.4 },
+      { name: 'Google - Non-Brand', spend: 6400, conversions: 142, roas: 3.56, cpc: 1.05, ctr: 1.8 },
+      { name: 'Meta - Retargeting', spend: 4320, conversions: 62, roas: 2.55, cpc: 1.22, ctr: 2.1 },
+      { name: 'TikTok - Spark Ads', spend: 1800, conversions: 38, roas: 3.60, cpc: 0.82, ctr: 2.8 },
+    ],
+  };
+}
+
+// Insights page
+export function getAIInsights() {
+  return mockInsights;
+}
+
+// Settings/Integrations page
+export function getIntegrationStatus() {
+  return [
+    { id: 'google-ads', name: 'Google Ads', platform: 'google_ads', status: 'connected' as const, lastSync: '2 min ago', icon: 'google' },
+    { id: 'meta-ads', name: 'Meta Ads', platform: 'meta_ads', status: 'connected' as const, lastSync: '5 min ago', icon: 'meta' },
+    { id: 'tiktok-ads', name: 'TikTok Ads', platform: 'tiktok_ads', status: 'connected' as const, lastSync: '8 min ago', icon: 'tiktok' },
+    { id: 'google-analytics', name: 'Google Analytics 4', platform: 'ga4', status: 'connected' as const, lastSync: '3 min ago', icon: 'analytics' },
+    { id: 'hubspot', name: 'HubSpot CRM', platform: 'hubspot', status: 'pending' as const, lastSync: 'Never', icon: 'hubspot' },
+    { id: 'salesforce', name: 'Salesforce', platform: 'salesforce', status: 'disconnected' as const, lastSync: 'Never', icon: 'salesforce' },
+  ];
+}
