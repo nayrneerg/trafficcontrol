@@ -229,7 +229,7 @@ export default function ROIPage() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base">ROI % by Channel</CardTitle>
-            <CardDescription>(Closed Revenue - Ad Spend) / Ad Spend \u00d7 100</CardDescription>
+            <CardDescription>(Closed Revenue - Ad Spend) / Ad Spend &times; 100</CardDescription>
           </CardHeader>
           <CardContent>
             {loading ? (
@@ -354,8 +354,8 @@ export default function ROIPage() {
       {data && (
         <p className="text-xs text-muted-foreground">
           Data source: {data.source === 'cache' ? 'Cached (updated within 6h)' : 'Live calculation'}
-          {' \u00b7 '}{data.period_start} to {data.period_end}
-          {' \u00b7 '} Attribution based on UTM parameters and CRM lead source fields.
+          {' \u00B7 '}{data.period_start} to {data.period_end}
+          {' \u00B7 '} Attribution based on UTM parameters and CRM lead source fields.
         </p>
       )}
     </div>
@@ -390,7 +390,7 @@ function EmptyState() {
     <div className="py-12 text-center">
       <p className="text-muted-foreground text-sm font-medium">No attribution data yet</p>
       <p className="text-muted-foreground text-xs mt-1">
-        Connect HubSpot or Salesforce and click \u201cSync CRM\u201d to pull closed deals.
+        Connect HubSpot or Salesforce and click &ldquo;Sync CRM&rdquo; to pull closed deals.
       </p>
     </div>
   );
