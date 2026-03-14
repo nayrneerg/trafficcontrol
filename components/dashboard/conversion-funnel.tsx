@@ -1,12 +1,16 @@
 interface ConversionFunnelProps {
-  data: Array<{
-    stage: string
-    count: number
-  }>
+  data: {
+    stages: Array<{
+      stage: string
+      value: number
+      percentage: number
+    }>
+  }
 }
 
 export function ConversionFunnel({ data }: ConversionFunnelProps) {
-  const maxCount = data[0]?.count || 1
+  const stages = data.stages
+  const maxValue = stages[0]?.value || 1
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
@@ -14,11 +18,11 @@ export function ConversionFunnel({ data }: ConversionFunnelProps) {
         Conversion Funnel
       </h2>
       <div className="space-y-3">
-        {data.map((stage, idx) => {
-          const percentage = (stage.count / maxCount) * 100
-          const prevStage = data[idx - 1]
+        {stages.map((stage, idx) => {
+          const barWidth = (stage.value / maxValue) * 100
+          const prevStage = stages[idx - 1]
           const conversionRate = prevStage 
-            ? ((stage.count / prevStage.count) * 100).toFixed(1)
+            ? ((stage.value / prevStage.value) * 100).toFixed(1)
             : '100.0'
 
           return (
@@ -34,7 +38,7 @@ export function ConversionFunnel({ data }: ConversionFunnelProps) {
                 </div>
                 <div className="text-right">
                   <div className="text-sm font-semibold text-slate-900 dark:text-white">
-                    {stage.count.toLocaleString()}
+                    {stage.value.toLocaleString()}
                   </div>
                   {idx > 0 && (
                     <div className="text-xs text-slate-500 dark:text-slate-400">
@@ -47,11 +51,11 @@ export function ConversionFunnel({ data }: ConversionFunnelProps) {
                 <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-10 overflow-hidden">
                   <div
                     className="bg-gradient-to-r from-blue-600 to-blue-500 h-10 flex items-center justify-end px-4 transition-all duration-500"
-                    style={{ width: `${percentage}%` }}
+                    style={{ width: `${barWidth}%` }}
                   >
-                    {percentage > 15 && (
+                    {barWidth > 15 && (
                       <span className="text-sm font-medium text-white">
-                        {percentage.toFixed(1)}%
+                        {stage.percentage.toFixed(1)}%
                       </span>
                     )}
                   </div>
