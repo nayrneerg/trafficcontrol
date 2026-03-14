@@ -48,8 +48,8 @@ const PAID_CHANNELS = new Set(['google_ads', 'meta_ads', 'tiktok_ads']);
  * Core attribution function.
  * 
  * Strategy (in priority order per deal):
- *   1. UTM source on the deal -> map to channel via lead_source_mappings
- *   2. CRM lead_source field -> map via lead_source_mappings
+ *   1. UTM source on the deal → map to channel via lead_source_mappings
+ *   2. CRM lead_source field → map via lead_source_mappings
  *   3. Fallback: 'unknown'
  *
  * Then joins attributed revenue against ad spend from metrics_cache
