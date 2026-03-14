@@ -9,36 +9,12 @@ import type {
 
 // Executive Summary
 export const mockSummary: ExecutiveSummary = {
-  totalSpend: {
-    value: 45280,
-    change: 8.4,
-    trend: 'up',
-  },
-  totalConversions: {
-    value: 842,
-    change: 12.3,
-    trend: 'up',
-  },
-  blendedRoas: {
-    value: 3.18,
-    change: 5.2,
-    trend: 'up',
-  },
-  totalLeads: {
-    value: 1247,
-    change: 9.7,
-    trend: 'up',
-  },
-  totalRevenue: {
-    value: 144090,
-    change: 14.8,
-    trend: 'up',
-  },
-  totalImpressions: {
-    value: 2134567,
-    change: 6.2,
-    trend: 'up',
-  },
+  totalSpend: { value: 45280, change: 8.4, trend: 'up' },
+  totalConversions: { value: 842, change: 12.3, trend: 'up' },
+  blendedRoas: { value: 3.18, change: 5.2, trend: 'up' },
+  totalLeads: { value: 1247, change: 9.7, trend: 'up' },
+  totalRevenue: { value: 144090, change: 14.8, trend: 'up' },
+  totalImpressions: { value: 2134567, change: 6.2, trend: 'up' },
 };
 
 // Channel Metrics
@@ -113,7 +89,7 @@ function generateDateSeries(days: number): string[] {
   return dates;
 }
 
-// Trend Data - Spend
+// Trend Data
 const dates = generateDateSeries(30);
 
 const googleSpendData = dates.map((date, i) => ({
@@ -134,7 +110,6 @@ const tiktokSpendData = dates.map((date, i) => ({
   platform: 'tiktok_ads' as const,
 }));
 
-// Trend Data - Conversions
 const googleConversionData = dates.map((date, i) => ({
   date,
   value: 15 + Math.random() * 8 + Math.sin(i / 7) * 4,
@@ -154,26 +129,15 @@ const tiktokConversionData = dates.map((date, i) => ({
 }));
 
 export const mockTrendData: TimeSeries[] = [
-  {
-    metric: 'spend',
-    data: [...googleSpendData, ...metaSpendData, ...tiktokSpendData],
-  },
-  {
-    metric: 'conversions',
-    data: [...googleConversionData, ...metaConversionData, ...tiktokConversionData],
-  },
+  { metric: 'spend', data: [...googleSpendData, ...metaSpendData, ...tiktokSpendData] },
+  { metric: 'conversions', data: [...googleConversionData, ...metaConversionData, ...tiktokConversionData] },
 ];
 
-// Flat trend data for TrendChart component (expects { date, spend, conversions }[])
 function buildFlatTrendData(): Array<{ date: string; spend: number; conversions: number }> {
   return dates.map((date, i) => ({
     date,
-    spend: Math.round(
-      googleSpendData[i].value + metaSpendData[i].value + tiktokSpendData[i].value
-    ),
-    conversions: Math.round(
-      googleConversionData[i].value + metaConversionData[i].value + tiktokConversionData[i].value
-    ),
+    spend: Math.round(googleSpendData[i].value + metaSpendData[i].value + tiktokSpendData[i].value),
+    conversions: Math.round(googleConversionData[i].value + metaConversionData[i].value + tiktokConversionData[i].value),
   }));
 }
 
@@ -181,74 +145,15 @@ const flatTrendData = buildFlatTrendData();
 
 // Insights
 export const mockInsights: Insight[] = [
-  {
-    id: 'insight-001',
-    type: 'recommendation',
-    priority: 'high',
-    title: 'Google Ads ROAS exceeding target by 28%',
-    description:
-      'Google Ads is delivering a 3.83x ROAS, well above the 3.0x target. Consider increasing budget allocation by 15-20% to capitalize on strong performance.',
-    metric: 'roas',
-    platform: 'google_ads',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
-  },
-  {
-    id: 'insight-002',
-    type: 'anomaly',
-    priority: 'medium',
-    title: 'TikTok CPC decreased 3.5% week-over-week',
-    description:
-      'TikTok Ads cost-per-click dropped from $1.00 to $0.96, indicating improved ad relevance or reduced competition. Monitor this trend for sustained efficiency gains.',
-    metric: 'cpc',
-    platform: 'tiktok_ads',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(),
-  },
-  {
-    id: 'insight-003',
-    type: 'summary',
-    priority: 'low',
-    title: 'Overall conversion rate improved 12.3% this period',
-    description:
-      'Total conversions increased from 750 to 842, driven primarily by Google Ads (+15.2%) and TikTok Ads (+13.9%). Meta Ads also showed solid growth at +8.7%.',
-    metric: 'conversions',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(),
-  },
-  {
-    id: 'insight-004',
-    type: 'recommendation',
-    priority: 'medium',
-    title: 'Meta Ads CPL optimization opportunity',
-    description:
-      'Meta Ads CPL of $71.07 is 60% higher than Google Ads ($44.46). Review audience targeting and creative performance to identify efficiency improvements.',
-    metric: 'cpl',
-    platform: 'meta_ads',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString(),
-  },
-  {
-    id: 'insight-005',
-    type: 'anomaly',
-    priority: 'high',
-    title: 'Funnel drop-off spike at MQL to SQL stage',
-    description:
-      'Conversion rate from MQL to SQL is 36.79%, down from historical average of 42%. Sales team should review lead quality and follow-up timing.',
-    metric: 'conversion_rate',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 18).toISOString(),
-  },
-  {
-    id: 'insight-006',
-    type: 'recommendation',
-    priority: 'medium',
-    title: 'Cross-platform CTR consistency at 2.0%',
-    description:
-      'All three platforms showing identical 2.0% CTR suggests opportunity to test more aggressive creative variations and audience expansion.',
-    metric: 'ctr',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-  },
+  { id: 'insight-001', type: 'recommendation', priority: 'high', title: 'Google Ads ROAS exceeding target by 28%', description: 'Google Ads is delivering a 3.83x ROAS, well above the 3.0x target. Consider increasing budget allocation by 15-20% to capitalize on strong performance.', metric: 'roas', platform: 'google_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString() },
+  { id: 'insight-002', type: 'anomaly', priority: 'medium', title: 'TikTok CPC decreased 3.5% week-over-week', description: 'TikTok Ads cost-per-click dropped from $1.00 to $0.96, indicating improved ad relevance or reduced competition.', metric: 'cpc', platform: 'tiktok_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString() },
+  { id: 'insight-003', type: 'summary', priority: 'low', title: 'Overall conversion rate improved 12.3% this period', description: 'Total conversions increased from 750 to 842, driven primarily by Google Ads (+15.2%) and TikTok Ads (+13.9%).', metric: 'conversions', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString() },
+  { id: 'insight-004', type: 'recommendation', priority: 'medium', title: 'Meta Ads CPL optimization opportunity', description: 'Meta Ads CPL of $71.07 is 60% higher than Google Ads ($44.46). Review audience targeting and creative performance.', metric: 'cpl', platform: 'meta_ads', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString() },
+  { id: 'insight-005', type: 'anomaly', priority: 'high', title: 'Funnel drop-off spike at MQL to SQL stage', description: 'Conversion rate from MQL to SQL is 36.79%, down from historical average of 42%.', metric: 'conversion_rate', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 18).toISOString() },
+  { id: 'insight-006', type: 'recommendation', priority: 'medium', title: 'Cross-platform CTR consistency at 2.0%', description: 'All three platforms showing identical 2.0% CTR suggests opportunity to test more aggressive creative variations.', metric: 'ctr', createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString() },
 ];
 
-// =============================================
-// Sparkline data for MetricCard trend prop (expects number[])
-// =============================================
+// Sparkline arrays for MetricCard trend prop (expects number[])
 const sparkUp = [3, 4, 3, 5, 4, 6, 5, 7, 6, 8, 7, 9];
 const sparkDown = [9, 8, 9, 7, 8, 6, 7, 5, 6, 4, 5, 3];
 
@@ -256,7 +161,6 @@ const sparkDown = [9, 8, 9, 7, 8, 6, 7, 5, 6, 4, 5, 3];
 // Data accessor functions used by page components
 // =============================================
 
-// Google Ads page
 export function getGoogleAdsData() {
   const google = mockChannels.find(c => c.platform === 'google_ads')!;
   return {
@@ -274,15 +178,14 @@ export function getGoogleAdsData() {
     roasTrend: sparkUp,
     trendData: flatTrendData,
     campaigns: [
-      { name: 'Brand Search', spend: 8200, conversions: 210, roas: 4.12, cpc: 0.72, ctr: 3.1 },
-      { name: 'Non-Brand Search', spend: 6400, conversions: 142, roas: 3.56, cpc: 1.05, ctr: 1.8 },
-      { name: 'Performance Max', spend: 4800, conversions: 98, roas: 3.88, cpc: 0.84, ctr: 2.2 },
-      { name: 'Display Remarketing', spend: 2740, conversions: 48, roas: 3.50, cpc: 0.62, ctr: 0.9 },
+      { campaign: 'Brand Search', platform: 'Google', spend: 8200, clicks: 11389, conversions: 210, roas: 4.12 },
+      { campaign: 'Non-Brand Search', platform: 'Google', spend: 6400, clicks: 6095, conversions: 142, roas: 3.56 },
+      { campaign: 'Performance Max', platform: 'Google', spend: 4800, clicks: 5714, conversions: 98, roas: 3.88 },
+      { campaign: 'Display Remarketing', platform: 'Google', spend: 2740, clicks: 4419, conversions: 48, roas: 3.50 },
     ],
   };
 }
 
-// Meta Ads page
 export function getMetaAdsData() {
   const meta = mockChannels.find(c => c.platform === 'meta_ads')!;
   return {
@@ -300,15 +203,14 @@ export function getMetaAdsData() {
     roasTrend: sparkUp,
     trendData: flatTrendData,
     campaigns: [
-      { name: 'Lookalike - Top Customers', spend: 6200, conversions: 95, roas: 2.68, cpc: 1.35, ctr: 2.4 },
-      { name: 'Interest - Marketing Pros', spend: 5100, conversions: 72, roas: 2.42, cpc: 1.48, ctr: 1.9 },
-      { name: 'Retargeting - Website', spend: 4320, conversions: 62, roas: 2.55, cpc: 1.22, ctr: 2.1 },
-      { name: 'Broad - Awareness', spend: 3000, conversions: 33, roas: 1.98, cpc: 1.68, ctr: 1.5 },
+      { campaign: 'Lookalike - Top Customers', platform: 'Meta', spend: 6200, clicks: 4593, conversions: 95, roas: 2.68 },
+      { campaign: 'Interest - Marketing Pros', platform: 'Meta', spend: 5100, clicks: 3446, conversions: 72, roas: 2.42 },
+      { campaign: 'Retargeting - Website', platform: 'Meta', spend: 4320, clicks: 3541, conversions: 62, roas: 2.55 },
+      { campaign: 'Broad - Awareness', platform: 'Meta', spend: 3000, clicks: 1786, conversions: 33, roas: 1.98 },
     ],
   };
 }
 
-// TikTok Ads page
 export function getTikTokAdsData() {
   const tiktok = mockChannels.find(c => c.platform === 'tiktok_ads')!;
   return {
@@ -326,14 +228,13 @@ export function getTikTokAdsData() {
     roasTrend: sparkUp,
     trendData: flatTrendData,
     campaigns: [
-      { name: 'Spark Ads - UGC', spend: 1800, conversions: 38, roas: 3.60, cpc: 0.82, ctr: 2.8 },
-      { name: 'In-Feed - Product Demo', spend: 1400, conversions: 26, roas: 3.18, cpc: 0.95, ctr: 2.2 },
-      { name: 'TopView - Brand', spend: 1320, conversions: 18, roas: 2.88, cpc: 1.12, ctr: 1.6 },
+      { campaign: 'Spark Ads - UGC', platform: 'TikTok', spend: 1800, clicks: 2195, conversions: 38, roas: 3.60 },
+      { campaign: 'In-Feed - Product Demo', platform: 'TikTok', spend: 1400, clicks: 1474, conversions: 26, roas: 3.18 },
+      { campaign: 'TopView - Brand', platform: 'TikTok', spend: 1320, clicks: 1179, conversions: 18, roas: 2.88 },
     ],
   };
 }
 
-// GA4 page
 export function getGA4Data() {
   return {
     users: 48250,
@@ -359,7 +260,6 @@ export function getGA4Data() {
   };
 }
 
-// CRM page
 export function getCRMData() {
   return {
     totalLeads: 1247,
@@ -392,7 +292,6 @@ export function getCRMData() {
   };
 }
 
-// Dashboard page
 export function getDashboardMetrics() {
   return {
     totalSpend: mockSummary.totalSpend.value,
@@ -424,12 +323,10 @@ export function getDashboardMetrics() {
   };
 }
 
-// Insights page
 export function getAIInsights() {
   return mockInsights;
 }
 
-// Settings/Integrations page
 export function getIntegrationStatus() {
   return [
     { id: 'google-ads', name: 'Google Ads', platform: 'google_ads', status: 'connected' as const, lastSync: '2 min ago', icon: 'google' },
