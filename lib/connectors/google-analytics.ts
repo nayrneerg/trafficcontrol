@@ -5,6 +5,6 @@ export async function syncGoogleAnalytics(creds: { access_token: string; metadat
   // POST https://analyticsdata.googleapis.com/v1beta/properties/{property_id}:runReport
   // with dimensions=[{name:"date"}], metrics=[{name:"sessions"},{name:"conversions"},{name:"totalRevenue"}]
   
-  console.log('[google-analytics] Sync called \u2014 configure GA4_PROPERTY_ID in org metadata to enable');
+  console.log('[google-analytics] Sync called — configure GA4_PROPERTY_ID in org metadata to enable');
   return [];
 }
