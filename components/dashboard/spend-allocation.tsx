@@ -4,15 +4,30 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recha
 
 interface SpendAllocationProps {
   data: Array<{
-    channel: string
+    platform: string
     spend: number
   }>
 }
 
 const COLORS = ['#2563eb', '#7c3aed', '#db2777', '#ea580c', '#ca8a04']
 
+const PLATFORM_LABELS: Record<string, string> = {
+  google_ads: 'Google Ads',
+  meta_ads: 'Meta Ads',
+  tiktok_ads: 'TikTok Ads',
+  google_analytics: 'Google Analytics',
+  hubspot: 'HubSpot',
+  salesforce: 'Salesforce',
+  seo: 'SEO',
+}
+
 export function SpendAllocation({ data }: SpendAllocationProps) {
   const total = data.reduce((sum, item) => sum + item.spend, 0)
+
+  const chartData = data.map(item => ({
+    name: PLATFORM_LABELS[item.platform] || item.platform,
+    spend: item.spend,
+  }))
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
@@ -22,7 +37,7 @@ export function SpendAllocation({ data }: SpendAllocationProps) {
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
-            data={data}
+            data={chartData}
             cx="50%"
             cy="50%"
             innerRadius={60}
@@ -30,9 +45,10 @@ export function SpendAllocation({ data }: SpendAllocationProps) {
             fill="#8884d8"
             paddingAngle={2}
             dataKey="spend"
+            nameKey="name"
             label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
           >
-            {data.map((entry, index) => (
+            {chartData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
@@ -47,8 +63,9 @@ export function SpendAllocation({ data }: SpendAllocationProps) {
           <Legend 
             verticalAlign="bottom" 
             height={36}
-            formatter={(value, entry: any) => {
-              const percentage = ((entry.payload.spend / total) * 100).toFixed(1)
+            formatter={(value: string) => {
+              const item = chartData.find(d => d.name === value)
+              const percentage = item ? ((item.spend / total) * 100).toFixed(1) : '0'
               return `${value} (${percentage}%)`
             }}
           />
